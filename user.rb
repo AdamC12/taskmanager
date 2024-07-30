@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'pry'
 
 class User
   attr_accessor :name, :projects
@@ -8,7 +9,8 @@ class User
     @projects = []
   end
 
-  def add_project(project)
+  def add_project(project, user, role)
+    project.add_user(user, role)
     @projects << project
   end
 
@@ -17,7 +19,9 @@ class User
   end
 
   def to_s
-    project_list = @projects.map(&:to_s).join("\n\n")
+    project_list = @projects.map { |project| project.to_s(self) }.join("\n\n")
     "User: #{@name}\nProjects:\n#{project_list}"
   end
 end
+
+# puts == x.to_s
