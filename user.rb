@@ -8,7 +8,8 @@ class User
     @projects = []
   end
 
-  def add_project(project)
+  def add_project(project, role)
+    project.add_user_to_team(self, role)
     @projects << project
   end
 
@@ -17,7 +18,10 @@ class User
   end
 
   def to_s
-    project_list = @projects.map(&:to_s).join("\n\n")
-    "User: #{@name}\nProjects:\n#{project_list}"
+    projects_string = @projects.map do |project|
+      project.formatted_for_user(self)
+    end.join("\n\n")
+
+    "User: #{@name}\nProjects:\n\n#{projects_string}"
   end
 end
