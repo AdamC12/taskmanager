@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# string
 class Task
   attr_accessor :name, :description, :completed
 
