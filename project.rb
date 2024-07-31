@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# string
 class Project
   attr_accessor :name, :tasks
 
@@ -18,7 +19,7 @@ class Project
   end
 
   def add_user(user, role)
-    @team << { user: user, role: role }
+    @team << { user: user.name, role: role }
   end
 
   def to_s(user)

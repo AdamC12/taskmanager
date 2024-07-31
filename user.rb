@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-require 'pry'
 
+# string
 class User
   attr_accessor :name, :projects
 
@@ -9,8 +9,8 @@ class User
     @projects = []
   end
 
-  def add_project(project, user, role)
-    project.add_user(user, role)
+  def add_project(project, role)
+    project.add_user(self, role)
     @projects << project
   end
 
